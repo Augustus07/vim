@@ -28,7 +28,13 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 syntax on
 
 "显示行号
-set nu "等同于 set number
+set nu "等同于 set number"
+
+"查询高亮" hlsearch
+set hls
+
+"查询自动补全" incsearch
+set is
 
 "突出显示当前行
 "set cursorline "等同于 set cul
