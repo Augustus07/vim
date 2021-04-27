@@ -267,18 +267,26 @@ autocmd BufNewFile,BufRead *.cpp,*.[ch],*.java,*.py exec ":call SetAdd()"
 func SetAdd() 
 
 	if &filetype == 'c'
-
+		"注释快捷键
+		vnoremap <F8> :s#^#//#g<CR>
+		vnoremap <F9> :s#//##g<CR>
 		"设置该语言下常用的函数快捷键
 		inoremap pri printf(""); 
 	endif
 	if &filetype == 'java'
+		"注释快捷键
+		vnoremap <F8> :s#^#//#g<CR>
+		vnoremap <F9> :s#//##g<CR>
 
 		"设置该语言下常用的函数快捷键
 		imap psvm public static void main(String args[]){ <CR>
 		inoremap sout System.out.println("");
 	endif
 	if &filetype == 'python'
-		
+		"注释快捷键
+		vnoremap <F8> :s/^/#/g<CR>
+		vnoremap <F9> :s/#//g<CR>
+
 		"设置该语言下常用的函数快捷键
 		inoremap pri print("");
 	endif
