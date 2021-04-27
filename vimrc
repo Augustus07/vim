@@ -122,7 +122,7 @@ set is
 set noeb
 
 "突出显示当前行
-"set cursorline "等同于 set cul
+set cursorline "等同于 set cul
 
 "突出显示当前列
 "set cursorcolumn "等同于 set cuc
@@ -257,32 +257,27 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F2键进行绑定
 map <F2> :NERDTreeMirror<CR>
 map <F2> :NERDTreeToggle<CR>
+let g:NERDTreeSize=30
+let NERDTreeShowBookmarks=1
+
 
 "新建或者读取已经存在的.c,.cpp,.java,.py文件，配置一些快捷键
 autocmd BufNewFile,BufRead *.cpp,*.[ch],*.java,*.py exec ":call SetAdd()" 
 "定义函数SetAdd,用于绑定快捷键
 func SetAdd() 
 
-		if &filetype == 'c'
-		"<F8>注释,也可以写成这样 :s/^/\/\//g
-		"<F9>取消注释,也可以写成这样 :s/\/\///g
-		vmap <F8> :s#^#//#g<CR>
-		vmap <F9> :s#//##g<CR>
+	if &filetype == 'c'
 
 		"设置该语言下常用的函数快捷键
 		inoremap pri printf(""); 
 	endif
 	if &filetype == 'java'
-		vmap <F8> :s#^#//#g<CR>
-		vmap <F9> :s#//##g<CR>
 
 		"设置该语言下常用的函数快捷键
 		imap psvm public static void main(String args[]){ <CR>
 		inoremap sout System.out.println("");
 	endif
 	if &filetype == 'python'
-		vmap <F8> :s/^/#/g<CR>
-		vmap <F9> :s/#//g<CR>
 		
 		"设置该语言下常用的函数快捷键
 		inoremap pri print("");
