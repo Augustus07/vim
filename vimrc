@@ -191,7 +191,7 @@ map <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'c'
-        exec "!g++ % -o %<"
+        exec "!gcc % -o %<"
         exec "! ./%<"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
