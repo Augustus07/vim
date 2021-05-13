@@ -186,6 +186,24 @@ endfunction
 " 麻烦,不做设置,保持默认设置,vim默认没有设置longest.
 set completeopt=longest,menu "启用这句才会开启自动补全
 
+"C，C++,java 按F5编译运行
+map <F5> :call CompileRun()<CR>
+func! CompileRun()
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!./%
+    endif
+endfunc
+
 "新建.c,.cpp,.h,.sh,.java,.py文件，自动插入title
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetTitle()" 
 ""定义函数SetTitle，自动插入文件头 
@@ -200,6 +218,15 @@ func SetTitle()
 		call append(line(".")+3, "	#  Created Time: ".strftime("%c")) 
 		call append(line(".")+4, "#########################################################################") 
 		call append(line(".")+5, "	#!/bin/zsh")
+		call append(line(".")+6, "")
+	elseif &filetype == 'python' 
+		call setline(1, "##########################################################################") 
+		call append(line("."),   "#	+  File Name: ".expand("%")) 
+		call append(line(".")+1, "#	+  Author: chenb") 
+		call append(line(".")+2, "#	+  mail: lcy1059469861@163.com") 
+		call append(line(".")+3, "#	+  Created Time: ".strftime("%c")) 
+		call append(line(".")+4, " #########################################################################") 
+		call append(line(".")+5, "")
 		call append(line(".")+6, "")
 	else 
 		call setline(1, "/*************************************************************************") 
@@ -268,27 +295,36 @@ func SetAdd()
 
 	if &filetype == 'c'
 		"注释快捷键
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
 		"设置该语言下常用的函数快捷键
-		inoremap pri printf(""); 
+		inoremap pri printf("");<ESC>hhi
+		inoremap uns unsigned
 	endif
 	if &filetype == 'java'
 		"注释快捷键
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
 
 		"设置该语言下常用的函数快捷键
 		imap psvm public static void main(String args[]){ <CR>
-		inoremap sout System.out.println("");
+		inoremap sout System.out.println("");<ESC>hhi
+
 	endif
 	if &filetype == 'python'
 		"注释快捷键
+		nnoremap <F8> :s/^/#/g<CR>
+		nnoremap <F9> :s/#//g<CR>
 		vnoremap <F8> :s/^/#/g<CR>
 		vnoremap <F9> :s/#//g<CR>
 
 		"设置该语言下常用的函数快捷键
-		inoremap pri print("");
+		inoremap pri print("");<ESC>hhi
+
 	endif
 
 endfunc
