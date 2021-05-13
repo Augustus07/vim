@@ -176,7 +176,7 @@ func SetAdd()
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
 		"设置该语言下常用的函数快捷键
-		inoremap pri printf("");
+		inoremap pri printf("");<ESC>hhi
 	endif
 	if &filetype == 'java'
 		"注释快捷键
@@ -185,7 +185,7 @@ func SetAdd()
 
 		"设置该语言下常用的函数快捷键
 		imap psvm public static void main(String args[]){ <CR>
-		inoremap sout System.out.println("");
+		inoremap sout System.out.println("");<ESC>hhi
 	endif
 	if &filetype == 'python'
 		"注释快捷键
@@ -193,7 +193,7 @@ func SetAdd()
 		vnoremap <F9> :s/#//g<CR>
 
 		"设置该语言下常用的函数快捷键
-		inoremap pri print("");
+		inoremap pri print("");<ESC>hhi
 	endif
 
 endfunc
