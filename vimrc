@@ -157,6 +157,10 @@ set nobackup
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 
+" 在当前目录和其子目录下递归查找 tags文件 
+set tags=tags;
+set autochdir
+
 "显示中文帮助
 if version >= 603
     set helplang=cn
