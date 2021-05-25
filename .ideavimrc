@@ -69,6 +69,10 @@ set nobackup
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 
+" 在当前目录和其子目录下递归查找 tags文件
+set tags=tags;
+set autochdir
+
 "显示中文帮助
 if version >= 603
     set helplang=cn
@@ -175,6 +179,9 @@ func SetAdd()
 		"注释快捷键
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
+
 		"设置该语言下常用的函数快捷键
 		inoremap pri printf("");<ESC>hhi
 	endif
@@ -182,6 +189,8 @@ func SetAdd()
 		"注释快捷键
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
 
 		"设置该语言下常用的函数快捷键
 		imap psvm public static void main(String args[]){ <CR>
@@ -191,9 +200,11 @@ func SetAdd()
 		"注释快捷键
 		vnoremap <F8> :s/^/#/g<CR>
 		vnoremap <F9> :s/#//g<CR>
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
 
 		"设置该语言下常用的函数快捷键
-		inoremap pri print("");<ESC>hhi
+		inoremap pri print("")<ESC>hi
 	endif
 
 endfunc
