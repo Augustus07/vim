@@ -10,6 +10,11 @@
 
 "=====================================================
 "vim插件配置文件
+"
+"Install vundle
+"1. mkdir -p ~/.vim/bundle
+"2. git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"3. open vim and type command    :PluginInstall 
 "=====================================================
 
 set nocompatible              " 去除VI一致性,必须要添加
@@ -256,7 +261,7 @@ func SetTitle()
 	endif
 	".java文件 &filetype = java
 	if &filetype == 'java'
-		call append(line(".")+7,"public class ".expand("%"))
+		call append(line(".")+7,"public class ".expand("%:t:r"))
 	endif
 	".py文件 &filetype = python
 	if &filetype == 'python'
