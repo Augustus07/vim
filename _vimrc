@@ -181,14 +181,9 @@ func! CompileRun()
     exec "w"
     if &filetype == 'c'
         exec "!gcc % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!java %<"
-    elseif &filetype == 'sh'
+        exec "!%<.exe"
+		exec "!del%<.exe"
+	elseif &filetype == 'sh'
         :!./%
     endif
 endfunc
