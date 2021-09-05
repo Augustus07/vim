@@ -86,7 +86,7 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 
 "设置vim的窗口大小
-set lines=9999 columns=9999
+"set lines=40 columns=150
 
 " 我的状态行显示的内容（包括文件类型和解码）
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
