@@ -1,9 +1,8 @@
 "************************************************************************************
 "+ Author:chenb
 "+ Email:lcy1059469861@163.com
-"+ 说明:该配置使用用插件vundle和nerdtree
-"+ 增加<F2>用于开启/关闭nerdtree,<F8><F9>用于add/delete注释
-"+ 增加c,java,python的一些代码的快捷键，例如 java中的psvm,sout等
+"+ 该配置使用用插件管理工具vundle
+"+ 插件 nerdtree, taglist
 "************************************************************************************
 
 
@@ -50,15 +49,15 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
 " :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
 "
-" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+" 查阅 :help vundle
 
-"例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F2键进行绑定
+"例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F1键进行绑定
 map <F1> :NERDTreeMirror<CR>
 map <F1> :NERDTreeToggle<CR>
 let g:NERDTreeSize=30
 let NERDTreeShowBookmarks=1
 
-"taglist
+"taglist与F2键绑定
 map <F2> :TlistToggle<CR>
 let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=30        "设置taglist宽度
