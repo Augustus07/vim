@@ -291,8 +291,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "=====================================================
 
 "例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F2键进行绑定
-map <F2> :NERDTreeMirror<CR>
-map <F2> :NERDTreeToggle<CR>
+map <F1> :NERDTreeMirror<CR>
+map <F1> :NERDTreeToggle<CR>
 let g:NERDTreeSize=30
 let NERDTreeShowBookmarks=1
 
@@ -309,8 +309,8 @@ func SetAdd()
 		vnoremap <F8> :s#^#//#g<CR>
 		vnoremap <F9> :s#//##g<CR>
 		"设置该语言下常用的函数快捷键
-		inoremap pri printf("");<ESC>hhi
-		inoremap uns unsigned
+		"inoremap pri printf("");<ESC>hhi
+		"inoremap uns unsigned
 	endif
 	if &filetype == 'java'
 		"注释快捷键
@@ -332,7 +332,7 @@ func SetAdd()
 		vnoremap <F9> :s/#//g<CR>
 
 		"设置该语言下常用的函数快捷键
-		inoremap pri print("");<ESC>hhi
+		"inoremap pri print("");<ESC>hhi
 
 	endif
 
