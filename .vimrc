@@ -37,6 +37,7 @@ Plugin 'VundleVim/Vundle.vim'
 "4. 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'，例如 Plugin 'file:///home/gmarik/path/to/plugin'
 
 Plugin 'preservim/nerdtree'
+Plugin 'taglist.vim'
 
 call vundle#end()            " 必须
 filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
@@ -51,39 +52,26 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 
+"例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F2键进行绑定
+map <F1> :NERDTreeMirror<CR>
+map <F1> :NERDTreeToggle<CR>
+let g:NERDTreeSize=30
+let NERDTreeShowBookmarks=1
+
+"taglist
+map <F2> :TlistToggle<CR>
+let Tlist_Show_One_File=1    "只显示当前文件的tags
+let Tlist_WinWidth=30        "设置taglist宽度
+let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
+let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
 
 
 "=====================================================
 "vim配色方案
-"提示:1.用户先在vim自带的color theme中选择自己喜欢的
-"     2.找到自己喜欢的主题文件打开后复制内容到this part下面
-"     3.修改背景透明那行代码
-"     4.在ubuntu下设置terminal透明
+"提示:1.vim自带的colorscheme路经 /usr/share/vim/vim73/colors
 "=====================================================
 
-set background=dark
-set guifont=Courier_New:h10:cANSI
-highlight clear
-if exists("syntax_on")
-    syntax reset
-endif
-
-"背景透明，前提是linux终端透明
-" First set Normal to regular white on black text colors:
-hi Normal ctermfg=252 ctermbg=none 
-
-" Syntax highlighting (other color-groups using default, see :help group-name):
-hi Comment    cterm=NONE ctermfg=DarkCyan       gui=NONE guifg=#00aaaa
-hi Constant   cterm=NONE ctermfg=LightCyan      gui=NONE guifg=#00ffff
-hi Identifier cterm=NONE ctermfg=LightMagenta   gui=NONE guifg=#ff00ff
-hi Function   cterm=NONE ctermfg=LightGreen     gui=NONE guifg=#00ff00
-hi Statement  cterm=NONE ctermfg=White          gui=bold guifg=#ffffff
-hi PreProc    cterm=NONE ctermfg=Yellow         gui=NONE guifg=#ffff00
-hi Type       cterm=NONE ctermfg=LightGreen     gui=bold guifg=#00ff00
-hi Special    cterm=NONE ctermfg=LightRed       gui=NONE guifg=#ff0000
-hi Delimiter  cterm=NONE ctermfg=Yellow         gui=NONE guifg=#ffff00
-
-
+colorscheme morning
 
 "=====================================================
 "vim默认vimrc配置文件
@@ -99,7 +87,7 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 
 "设置vim的窗口大小
-set lines=40 columns=135
+set lines=9999 columns=9999
 
 " 我的状态行显示的内容（包括文件类型和解码）
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
@@ -289,12 +277,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "<CR> = 回车
 "
 "=====================================================
-
-"例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F2键进行绑定
-map <F1> :NERDTreeMirror<CR>
-map <F1> :NERDTreeToggle<CR>
-let g:NERDTreeSize=30
-let NERDTreeShowBookmarks=1
 
 
 "新建或者读取已经存在的.c,.cpp,.java,.py文件，配置一些快捷键
