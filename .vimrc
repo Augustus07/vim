@@ -189,9 +189,11 @@ func! CompileRun()
     if &filetype == 'c'
         exec "!gcc % -o %<"
         exec "! ./%<"
+		exec "!rm%<"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         exec "! ./%<"
+		exec "!rm%<"
     elseif &filetype == 'java'
         exec "!javac %"
         exec "!java %<"
