@@ -1,11 +1,14 @@
 "************************************************************************************
 "+ Author:chenb
 "+ Email:lcy1059469861@163.com
-"+ 说明:该配置使用用插件vundle和nerdtree
-"+ 增加<F2>用于开启/关闭nerdtree,<F8><F9>用于add/delete注释
-"+ 增加c,java,python的一些代码的快捷键，例如 java中的psvm,sout等
 "************************************************************************************
 
+"=====================================================
+"vim配色方案
+"提示:1.vim自带的colorscheme路经 /usr/share/vim/vim73/colors
+"=====================================================
+
+"=====================================================
 "vim默认vimrc配置文件
 "=====================================================
 
@@ -17,6 +20,16 @@ set encoding=utf-8
 "语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
+
+" 我的状态行显示的内容（包括文件类型和解码）
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+
+" 总是显示状态行
+set laststatus=2
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=1
 
 "语法高亮
 syntax on
@@ -69,6 +82,35 @@ set nobackup
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 
-" 在当前目录和其子目录下递归查找 tags文件
+" 在当前目录和其子目录下递归查找 tags文件 
 set tags=tags;
 set autochdir
+
+"显示中文帮助
+if version >= 603
+    set helplang=cn
+    set encoding=utf-8
+endif
+
+"自动补全
+":inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<ESC>O
+":inoremap } <c-r>=ClosePair('}')<CR>
+":inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap " ""<ESC>i
+":inoremap ' ''<ESC>i
+"function! ClosePair(char)
+"    if getline('.')[col('.') - 1] == a:char
+"        return "\<Right>"
+"    else
+"        return a:char
+"    endif
+"endfunction 
+
+" 设置自动补全的选项. longest表示只自动补全最大匹配的部分,剩余部分通过
+" CTRL-P/CTRL-N来选择匹配项进行补全. menu表示弹出可补全的内容列表.
+" 如果有多个匹配,longest选项不会自动选中并完整补全,要多按一次CTRL-P,比较
+" 麻烦,不做设置,保持默认设置,vim默认没有设置longest.
+set completeopt=longest,menu "启用这句才会开启自动补全
