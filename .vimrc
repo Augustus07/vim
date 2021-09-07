@@ -64,7 +64,6 @@ let Tlist_WinWidth=30        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
 let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
 
-
 "=====================================================
 "vim配色方案
 "提示:1.vim自带的colorscheme路经 /usr/share/vim/vim73/colors
@@ -182,21 +181,26 @@ endfunction
 " 麻烦,不做设置,保持默认设置,vim默认没有设置longest.
 set completeopt=longest,menu "启用这句才会开启自动补全
 
-"C，C++,java 按F5编译运行
+"C，C++,java,latex 按F5编译运行
+"latex用pdf阅读器 okular 显示
 map <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'c'
         exec "!gcc % -o %<"
         exec "! ./%<"
-		exec "!rm%<"
+		exec "!rm %<"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         exec "! ./%<"
-		exec "!rm%<"
+		exec "!rm %<"
     elseif &filetype == 'java'
         exec "!javac %"
         exec "!java %<"
+	elseif &filetype == 'tex'
+		exec "!xelatex %"
+		exec "!rm %<.aux %<.log"
+		exec "!okular %<.pdf"
     elseif &filetype == 'sh'
         :!./%
     endif
