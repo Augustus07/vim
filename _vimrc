@@ -175,18 +175,33 @@ endfunction
 " 麻烦,不做设置,保持默认设置,vim默认没有设置longest.
 set completeopt=longest,menu "启用这句才会开启自动补全
 
-"C，C++,java 按F5编译运行
+"C 按F5编译
 map <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'c'
         exec "!gcc % -o %<"
-        exec "!%<.exe"
-		exec "!del%<.exe"
+		exec "!%<.exe"
+		exec "!del %<.exe"
+	elseif &filetype == 'c++'
+        exec "!g++ % -o %<"
+		exec "!%<.exe"
+		exec "!del %<.exe"
+	elseif &filetype == 'java'
+        exec "!javac %"
+		exec "!java %<"
+		exec "!del %<.class"
+	elseif &filetype == 'python'
+        exec "!python %"
+	elseif &filetype == 'tex'
+		exec "!xelatex %"
+		exec "!del %<.aux %<.log"
+		exec "!okular %<.pdf"	
 	elseif &filetype == 'sh'
         :!./%
     endif
 endfunc
+
 
 "新建.c,.cpp,.h,.sh,.java,.py文件，自动插入title
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetTitle()" 
@@ -265,7 +280,15 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "
 "=====================================================
 
-"taglist与F3键绑定
+"例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F1键进行绑定
+map <F1> :NERDTreeMirror<CR>
+map <F1> :NERDTreeToggle<CR>
+let g:NERDTreeSize=30
+let NERDTreeShowBookmarks=1
+"不加这行每个目录前会有^G
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
+"taglist与F2键绑定
 map <F2> :TlistToggle<CR>
 let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=30        "设置taglist宽度
