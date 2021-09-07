@@ -197,10 +197,10 @@ func! CompileRun()
     elseif &filetype == 'java'
         exec "!javac %"
         exec "!java %<"
-	elseif &filetype == 'tex'
-		exec "!xelatex %"
-		exec "!rm %<.aux %<.log"
-		exec "!okular %<.pdf"
+    elseif &filetype == 'tex'
+	exec "!xelatex %"
+	exec "!rm %<.aux %<.log"
+	exec "!okular %<.pdf"
     elseif &filetype == 'sh'
         :!./%
     endif
