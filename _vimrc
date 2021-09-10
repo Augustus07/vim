@@ -94,8 +94,8 @@ set cmdheight=1
 "语法高亮
 syntax on
 
-"显示行号
-set nu "等同于 set number"
+"显示相对行号
+set relativenumber "等同于 set number"
 
 "查询高亮" hlsearch
 "set hls
