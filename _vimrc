@@ -196,7 +196,7 @@ func! CompileRun()
 	elseif &filetype == 'tex'
 		exec "!xelatex %"
 		exec "!del %<.aux %<.log"
-		exec "!okular %<.pdf"	
+		exec "!start %<.pdf"	
 	elseif &filetype == 'sh'
         :!./%
     endif
