@@ -290,6 +290,16 @@ func SetAdd()
 		"inoremap pri printf("");<ESC>hhi
 		"inoremap uns unsigned
 	endif
+	if &filetype == 'cpp'
+		"注释快捷键
+		nnoremap <F8> :s#^#//#g<CR>
+		nnoremap <F9> :s#//##g<CR>
+		vnoremap <F8> :s#^#//#g<CR>
+		vnoremap <F9> :s#//##g<CR>
+		"设置该语言下常用的函数快捷键
+		"inoremap pri printf("");<ESC>hhi
+		"inoremap uns unsigned
+	endif
 	if &filetype == 'java'
 		"注释快捷键
 		nnoremap <F8> :s#^#//#g<CR>
