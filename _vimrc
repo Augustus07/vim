@@ -170,7 +170,7 @@ func! CompileRun()
     if &filetype == 'c'
         exec "!gcc % -o %< && %<.exe "
 		exec "!del %<.exe"
-	elseif &filetype == 'c++'
+	elseif &filetype == 'cpp'
         exec "!g++ % -o %< && %<.exe"
 		exec "!del %<.exe"
 	elseif &filetype == 'python'
