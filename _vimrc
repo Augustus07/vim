@@ -180,23 +180,15 @@ map <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'c'
-        exec "!gcc % -o %<"
-		exec "!%<.exe"
+        exec "!gcc % -o %< && %<.exe "
 		exec "!del %<.exe"
 	elseif &filetype == 'c++'
-        exec "!g++ % -o %<"
-		exec "!%<.exe"
+        exec "!g++ % -o %< && %<.exe"
 		exec "!del %<.exe"
-	elseif &filetype == 'java'
-        exec "!javac %"
-		exec "!java %<"
-		exec "!del %<.class"
 	elseif &filetype == 'python'
-        exec "!python %"
+		exec "!python %"
 	elseif &filetype == 'tex'
-		exec "!xelatex %"
-		exec "!del %<.aux %<.log"
-		exec "!start %<.pdf"	
+		exec "!xelatex % && del %<.aux %<.log && start %<.pdf"
 	elseif &filetype == 'sh'
         :!./%
     endif
