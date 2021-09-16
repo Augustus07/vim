@@ -273,15 +273,15 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "=====================================================
 
 "例如打开nerdtree要使用命令':NERDTree',将打开与关闭nerdtree命令与F1键进行绑定
-map <F2> :NERDTreeMirror<CR>
-map <F2> :NERDTreeToggle<CR>
+map <F1> :NERDTreeMirror<CR>
+map <F1> :NERDTreeToggle<CR>
 let g:NERDTreeSize=30
 let NERDTreeShowBookmarks=1
 "不加这行每个目录前会有^G
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
 "taglist与F2键绑定
-map <F3> :TlistToggle<CR>
+map <F2> :TlistToggle<CR>
 let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=50        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
