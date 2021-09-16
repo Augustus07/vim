@@ -82,14 +82,14 @@ set helplang=cn
 set lines=9999 columns=9999
 
 " 我的状态行显示的内容（包括文件类型和解码）
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
-set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
 
-" 总是显示状态行
-set laststatus=2
+" 不显示状态行
+set laststatus=0
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
-set cmdheight=1
+set cmdheight=2
 
 "语法高亮
 syntax on
@@ -98,7 +98,7 @@ syntax on
 set relativenumber "等同于 set number"
 
 "查询高亮" hlsearch
-"set hls
+set hls
 
 "查询自动补全" incsearch
 set is
@@ -106,17 +106,11 @@ set is
 "关掉讨厌的提示音"
 set noeb
 
-"突出显示当前行
-set cursorline "等同于 set cul
-
-"突出显示当前列
-"set cursorcolumn "等同于 set cuc
-
 "共享剪贴板
 set clipboard+=unnamed
 
 " 在被分割的窗口间显示空白，便于阅读
-set fillchars=vert:\ ,stl:\ ,stlnc:\
+"set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 "高亮显示括号匹配
 set showmatch
@@ -145,12 +139,6 @@ set nocompatible
 " 在当前目录和其子目录下递归查找 tags文件 
 set tags=tags;
 set autochdir
-
-"显示中文帮助
-if version >= 603
-    set helplang=cn
-    set encoding=utf-8
-endif
 
 "自动补全
 :inoremap ( ()<ESC>i
